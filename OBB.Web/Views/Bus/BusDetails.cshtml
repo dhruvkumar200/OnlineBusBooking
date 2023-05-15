@@ -1,0 +1,118 @@
+@model IEnumerable<OBB.Data.Entities.BusTable>
+@{
+     Layout="_Layout1";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #F2F2F2;
+    }
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #4CAF50;
+        text-decoration: underline;
+    }
+</style>
+@using (Html.BeginForm())
+{
+   
+}
+<div>
+    <h2>Bus Details</h2>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>BusNo</th>
+            <th>Name</th>
+            <th>BusType</th>
+            <th>RouteFrom</th>
+            <th>RouteTo</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Seats</th>
+            <th>Action</th>
+            <th>Action</th>
+            <th>Action</th>
+            
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prod in Model)
+        {
+            <tr>
+                <td>
+                    @prod.BusNo
+                </td>
+                <td>
+                    @prod.Name
+                </td>
+                <td>
+                    @prod.BusType
+                </td>
+                <td>
+                    @prod.RouteFrom
+                </td>
+                <td>
+                    @prod.RouteTo
+                </td>
+                <td>
+                    @prod.Time
+                </td>
+                <td>
+                    @prod.Date
+                </td>
+                <td>
+                    @prod.Seats
+                </td>
+                @if(prod.CreatedBy==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
+                {
+                       <td>
+                     <label>@Html.ActionLink("Add","AddBusForm","Bus",new{@class="btn btn-primary"})
+                </label>
+
+                </td>
+                  <td>
+                     <label>@Html.ActionLink("Edit","EditBus","Bus",new{prod.Id},new{@class="btn btn-primary"})
+                </label>
+
+                </td>
+                <td>
+                     <label>@Html.ActionLink("Delete","DeleteBus","Bus",new{prod.Id},new{@class="btn btn-primary",onclick="return confirm('Do you really want to delete this record')"})
+                </label>
+
+                </td>
+                }
+                else
+                {
+                     <td>
+                     <label>@Html.ActionLink("Book","BookBus","Bus",new{prod.Id},new{@class="btn btn-primary"})
+                </label>
+
+                </td>
+                }
+               
+             
+
+            </tr>
+        }
+    </tbody>
+</table>
+

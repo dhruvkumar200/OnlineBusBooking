@@ -1,0 +1,17 @@
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\bin\Debug\net7.0\OBB.Data.deps.json
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\bin\Debug\net7.0\OBB.Data.dll
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\bin\Debug\net7.0\OBB.Data.pdb
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\bin\Debug\net7.0\OBB.Models.dll
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\bin\Debug\net7.0\OBB.Models.pdb
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.csproj.AssemblyReference.cache
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.AssemblyInfoInputs.cache
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.AssemblyInfo.cs
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.csproj.CoreCompileInputs.cache
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.csproj.CopyComplete
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.dll
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\refint\OBB.Data.dll
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.pdb
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\ref\OBB.Data.dll
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\bin\Debug\net7.0\OBB.Data.runtimeconfig.json
+D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Data\obj\Debug\net7.0\OBB.Data.genruntimeconfig.cache
