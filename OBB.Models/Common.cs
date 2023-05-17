@@ -8,7 +8,7 @@ namespace OBB.Models
 {
     public class Common
     {
-    
+        
         
     }
      

@@ -21,7 +21,7 @@ namespace OBB.Repository
             user.Email=addUser.Email;
             user.Password=addUser.Password;
             user.PhoneNo=addUser.Phone;
-            user.RoleId=2;
+            user.RoleId=2; 
             _context.Add(user);
             _context.SaveChanges();
             return true;

@@ -95,6 +95,7 @@ namespace OBB.Web.Controllers
             {
                 ViewBag.types=new List<SelectListItem>();
             }
+            
             AddBusModel busModel = _iBusBusiness.GetBusDetailById(id);
             return View(busModel);
 

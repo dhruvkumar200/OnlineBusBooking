@@ -63,7 +63,7 @@ namespace OBB.Repository
             editbus.Seats=busdetailbyId.Seats;
             editbus.BusNo=busdetailbyId.BusNo;
             editbus.BustypeId=busdetailbyId.BusType;
-            editbus.CreatedBy=busdetailbyId.Id;
+            editbus.CreatedBy=Convert.ToInt32(busdetailbyId.CreatedBy);
             return editbus;
         }
         public bool EditBusDetail(AddBusModel editbus)
@@ -74,9 +74,10 @@ namespace OBB.Repository
             bus.RouteTo=editbus.RouteTo;
             bus.Time=editbus.Time;
             bus.Id=editbus.Id;
-            bus.BusTypeNavigation.Id= (int)editbus.BustypeId;
+            bus.BusType=editbus.BustypeId;
             bus.BusNo=editbus.BusNo;
             bus.Seats=editbus.Seats;
+            bus.CreatedBy=2;
             _context.BusTables.Update(bus);
             return _context.SaveChanges()>0;
 
