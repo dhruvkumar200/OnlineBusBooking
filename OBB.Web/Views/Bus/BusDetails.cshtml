@@ -34,6 +34,13 @@
 <div>
     <h2>Bus Details</h2>
 </div>
+<div>
+      @if(Model.FirstOrDefault().CreatedByNavigation.RoleId==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
+                {
+                     <label>@Html.ActionLink("Add","AddBusForm","Bus",new{@class="btn btn-primary"})
+                </label>
+                }
+</div>
 
 <table>
     <thead>
@@ -57,6 +64,7 @@
     <tbody>
         @foreach (var prod in Model)
         {
+               
             <tr>
                 <td>
                     @prod.BusNo
@@ -82,13 +90,9 @@
                 <td>
                     @prod.Seats
                 </td>
-                @if(prod.CreatedByNavigation.Id==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
+                @if(prod.CreatedByNavigation.RoleId==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
                 {
-                       <td>
-                     <label>@Html.ActionLink("Add","AddBusForm","Bus",new{@class="btn btn-primary"})
-                </label>
-
-                </td>
+                      
                   <td>
                      <label>@Html.ActionLink("Edit","EditBus","Bus",new{prod.Id},new{@class="btn btn-primary"})
                 </label>

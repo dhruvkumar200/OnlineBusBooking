@@ -31,7 +31,8 @@ namespace OBB.Web.Controllers
         {
             var bustype = addBusModel.BusTypeList;
             var claims = User.Identities.First().Claims.ToList();
-            int Id = Convert.ToInt32(claims.FirstOrDefault(x => x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value);
+            int Id = Convert.ToInt32(claims.FirstOrDefault(x => x.Type.Contains("UserData", StringComparison.OrdinalIgnoreCase))?.Value);
+            addBusModel.CreatedBy=Id;
             _iBusBusiness.AddBus(addBusModel);
             return RedirectToAction("BusDetails", "Bus");
         }

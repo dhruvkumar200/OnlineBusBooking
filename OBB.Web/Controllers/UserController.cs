@@ -78,7 +78,7 @@ namespace OBB.Web.Controllers
             var UserDetails = _iUserBusiness.GetUserDetailbyEmail(loginModel.Email);
             if (UserDetails != null && BCrypt.Net.BCrypt.Verify(loginModel.Password, UserDetails.Password))
             {
-                var claims = new Claim[] { new Claim(ClaimTypes.Email, UserDetails.Email), new Claim(ClaimTypes.Role, UserDetails.RoleId.ToString())};
+                var claims = new Claim[] { new Claim(ClaimTypes.Email, UserDetails.Email), new Claim(ClaimTypes.Role, UserDetails.RoleId.ToString()),new Claim(ClaimTypes.UserData, UserDetails.Id.ToString())};
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));                 
                 return RedirectToAction("BusDetails", "Bus");
