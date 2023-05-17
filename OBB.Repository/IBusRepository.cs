@@ -14,5 +14,6 @@ namespace OBB.Repository
         bool DeleteBusInfo(int id);
         AddBusModel GetBusDetailById(int id);
         public bool EditBusDetail(AddBusModel editbus);
+        public List<BusTypeTable> GetBusType();
     }
 }

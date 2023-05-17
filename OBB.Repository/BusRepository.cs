@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using OBB.Data.Entities;
 using OBB.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace OBB.Repository
 {
@@ -22,18 +23,24 @@ namespace OBB.Repository
             bus.RouteTo = addBus.RouteTo;
             bus.Time = addBus.Time;
             bus.BusNo=addBus.BusNo;
-            bus.BusType=addBus.BusType.ToString();
             bus.Seats=addBus.Seats;
+            bus.BusType=addBus.BustypeId;
+            bus.CreatedBy=addBus.CreatedBy;
             bus.Date=addBus.Date.ToString("MM/dd/yyyy");
-            bus.CreatedBy=1;
             _context.Add(bus);
             return _context.SaveChanges() > 0;
         }
         public List<BusTable> GetBusList()
         {
             
-            var BusInfo = _context.BusTables.ToList();
+            var BusInfo =_context.BusTables.Include(x=>x.BusTypeNavigation).Include(x=>x.CreatedByNavigation).ToList();
             return BusInfo;
+        }
+        public List<BusTypeTable> GetBusType()
+        {
+            
+           return _context.BusTypeTables.ToList();
+            
         }
         public bool DeleteBusInfo(int id)
         {
@@ -53,6 +60,10 @@ namespace OBB.Repository
             editbus.RouteFrom=busdetailbyId.RouteFrom;
             editbus.RouteTo=busdetailbyId.RouteTo;
             editbus.Time= (TimeSpan)busdetailbyId.Time;
+            editbus.Seats=busdetailbyId.Seats;
+            editbus.BusNo=busdetailbyId.BusNo;
+            editbus.BustypeId=busdetailbyId.BusType;
+            editbus.CreatedBy=busdetailbyId.Id;
             return editbus;
         }
         public bool EditBusDetail(AddBusModel editbus)
@@ -63,6 +74,9 @@ namespace OBB.Repository
             bus.RouteTo=editbus.RouteTo;
             bus.Time=editbus.Time;
             bus.Id=editbus.Id;
+            bus.BusTypeNavigation.Id= (int)editbus.BustypeId;
+            bus.BusNo=editbus.BusNo;
+            bus.Seats=editbus.Seats;
             _context.BusTables.Update(bus);
             return _context.SaveChanges()>0;
 

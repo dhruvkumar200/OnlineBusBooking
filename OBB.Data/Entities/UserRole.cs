@@ -7,8 +7,5 @@ namespace OBB.Data.Entities
     {
         public int? UserId { get; set; }
         public int? RoleId { get; set; }
-
-        public virtual RoleTable? Role { get; set; }
-        public virtual UserTable? User { get; set; }
     }
 }

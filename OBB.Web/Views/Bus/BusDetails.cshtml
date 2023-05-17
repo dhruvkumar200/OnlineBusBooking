@@ -65,7 +65,7 @@
                     @prod.Name
                 </td>
                 <td>
-                    @prod.BusType
+                    @prod.BusTypeNavigation.Types
                 </td>
                 <td>
                     @prod.RouteFrom
@@ -82,7 +82,7 @@
                 <td>
                     @prod.Seats
                 </td>
-                @if(prod.CreatedBy==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
+                @if(prod.CreatedByNavigation.Id==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
                 {
                        <td>
                      <label>@Html.ActionLink("Add","AddBusForm","Bus",new{@class="btn btn-primary"})

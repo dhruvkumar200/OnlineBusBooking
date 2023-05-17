@@ -24,6 +24,10 @@ namespace OBB.Business
          {
             return _iUserRepository.VerifyEmail(email);
          }
+         public List<RolesTable> GetRoles()
+         {
+            return _iUserRepository.GetRoles();
+         }
         
     }
 }

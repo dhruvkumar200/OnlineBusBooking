@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace OBB.Models
 {
@@ -30,6 +31,8 @@ namespace OBB.Models
         [DataType(DataType.Password)]    
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+        public int RoleId { get; set; }
+        public IEnumerable<SelectListItem> RoleList { get; set; }
         
     }
 }

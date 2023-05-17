@@ -18,7 +18,8 @@ namespace OBB.Data.Entities
 
         public virtual DbSet<Booking> Bookings { get; set; } = null!;
         public virtual DbSet<BusTable> BusTables { get; set; } = null!;
-        public virtual DbSet<RoleTable> RoleTables { get; set; } = null!;
+        public virtual DbSet<BusTypeTable> BusTypeTables { get; set; } = null!;
+        public virtual DbSet<RolesTable> RolesTables { get; set; } = null!;
         public virtual DbSet<UserRole> UserRoles { get; set; } = null!;
         public virtual DbSet<UserTable> UserTables { get; set; } = null!;
 
@@ -40,16 +41,6 @@ namespace OBB.Data.Entities
                 entity.ToTable("Booking");
 
                 entity.Property(e => e.CreatedDate).HasColumnType("date");
-
-                entity.HasOne(d => d.Bus)
-                    .WithMany()
-                    .HasForeignKey(d => d.BusId)
-                    .HasConstraintName("FK_Booking_Bus");
-
-                entity.HasOne(d => d.User)
-                    .WithMany()
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_Booking_UserTable");
             });
 
             modelBuilder.Entity<BusTable>(entity =>
@@ -57,10 +48,6 @@ namespace OBB.Data.Entities
                 entity.ToTable("BusTable");
 
                 entity.Property(e => e.BusNo).HasMaxLength(50);
-
-                entity.Property(e => e.BusType)
-                    .HasMaxLength(10)
-                    .IsFixedLength();
 
                 entity.Property(e => e.Date)
                     .HasMaxLength(10)
@@ -72,21 +59,33 @@ namespace OBB.Data.Entities
 
                 entity.Property(e => e.RouteTo).HasMaxLength(50);
 
+                entity.HasOne(d => d.BusTypeNavigation)
+                    .WithMany(p => p.BusTables)
+                    .HasForeignKey(d => d.BusType)
+                    .HasConstraintName("FK_BusTable_BusType");
+
                 entity.HasOne(d => d.CreatedByNavigation)
                     .WithMany(p => p.BusTables)
                     .HasForeignKey(d => d.CreatedBy)
                     .HasConstraintName("FK_BusTable_UserTable");
             });
 
-            modelBuilder.Entity<RoleTable>(entity =>
+            modelBuilder.Entity<BusTypeTable>(entity =>
             {
-                entity.ToTable("RoleTable");
+                entity.ToTable("BusTypeTable");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                entity.Property(e => e.Types).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<RolesTable>(entity =>
+            {
+                entity.ToTable("RolesTable");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Name).HasMaxLength(50);
             });
 
             modelBuilder.Entity<UserRole>(entity =>
@@ -94,16 +93,6 @@ namespace OBB.Data.Entities
                 entity.HasNoKey();
 
                 entity.ToTable("UserRole");
-
-                entity.HasOne(d => d.Role)
-                    .WithMany()
-                    .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK_UserRole_RoleTable");
-
-                entity.HasOne(d => d.User)
-                    .WithMany()
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK_UserRole_UserTable");
             });
 
             modelBuilder.Entity<UserTable>(entity =>
@@ -123,6 +112,12 @@ namespace OBB.Data.Entities
                 entity.Property(e => e.Password).HasMaxLength(500);
 
                 entity.Property(e => e.PhoneNo).HasMaxLength(15);
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.UserTables)
+                    .HasForeignKey(d => d.RoleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_UserTable_RolesTable");
             });
 
             OnModelCreatingPartial(modelBuilder);

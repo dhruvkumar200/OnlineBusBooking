@@ -10,8 +10,5 @@ namespace OBB.Data.Entities
         public int? Quantity { get; set; }
         public int? UserId { get; set; }
         public DateTime? CreatedDate { get; set; }
-
-        public virtual BusTable? Bus { get; set; }
-        public virtual UserTable? User { get; set; }
     }
 }

@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using BCrypt.Net;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using OBB.Business;
+using OBB.Data.Entities;
 using OBB.Models;
 
 namespace OBB.Web.Controllers
@@ -20,11 +23,14 @@ namespace OBB.Web.Controllers
     {
         private readonly ILogger<UserController> _logger;
         private readonly IUserBusiness _iUserBusiness;
+         private readonly BookingDBContext _context;
+       
 
-        public UserController(ILogger<UserController> logger, IUserBusiness iUserBusiness)
+        public UserController(ILogger<UserController> logger, IUserBusiness iUserBusiness,BookingDBContext context)
         {
             _logger = logger;
             _iUserBusiness = iUserBusiness;
+            _context = context;
             
 
         }
@@ -33,13 +39,32 @@ namespace OBB.Web.Controllers
         {
             return View();
         }
+
         public IActionResult AddUserForm()
-        {
-            return View();
+        { 
+            var roles=_iUserBusiness.GetRoles();
+            if(roles!=null&&roles.Any())
+            {
+            List<SelectListItem> lstRoles = new List<SelectListItem>();
+                foreach (var role in roles)
+                {
+                 lstRoles.Add(new SelectListItem{
+                    Value=Convert.ToString(role.Id),
+                    Text=role.Name
+                 });
+                }
+            ViewBag.Roles=lstRoles;
+            }
+            else
+            {
+                ViewBag.Roles=new List<SelectListItem>();
+            }
+            return View();    
         }
         
         public IActionResult AddUser(AddUserModel addUser)
         {
+
             addUser.Password=BCrypt.Net.BCrypt.HashPassword(addUser.Password);
             _iUserBusiness.AddUser(addUser);
             return RedirectToAction("Index", "Home");
@@ -53,19 +78,10 @@ namespace OBB.Web.Controllers
             var UserDetails = _iUserBusiness.GetUserDetailbyEmail(loginModel.Email);
             if (UserDetails != null && BCrypt.Net.BCrypt.Verify(loginModel.Password, UserDetails.Password))
             {
-                var claims = new Claim[] { new Claim(ClaimTypes.Email, UserDetails.Email), new Claim(ClaimTypes.Role, UserDetails.RoleId.ToString()) };
+                var claims = new Claim[] { new Claim(ClaimTypes.Email, UserDetails.Email), new Claim(ClaimTypes.Role, UserDetails.RoleId.ToString())};
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-                 var del=User.Identities.FirstOrDefault().Claims.ToList();
-       
-                if (UserDetails.RoleId == 1)
-                {
-                    return RedirectToAction("BusDetails", "Bus");
-                }
-                else
-                {
-                    return RedirectToAction("BusDetails", "Bus");
-                }
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));                 
+                return RedirectToAction("BusDetails", "Bus");
             }
             else
             {

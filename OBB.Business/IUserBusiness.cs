@@ -8,5 +8,6 @@ namespace OBB.Business
         bool AddUser(AddUserModel addUser);
         UserTable GetUserDetailbyEmail(string email);
         public bool VerifyEmail(string email);
+        public List<RolesTable> GetRoles();
     }
 }

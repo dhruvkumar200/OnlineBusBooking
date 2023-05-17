@@ -74,9 +74,8 @@
             <div class="col-sm-6 form-group mb-3">
                 <label for="BusType" class="col-md-3 control-label"> BusType</label>
                 <div class="col-md-9">
-                    @Html.DropDownListFor(x=>x.BusType, new SelectList()),
-                "Select Type")
-                    @Html.ValidationMessageFor(x => x.BusType)
+                <select name="BustypeId" class="form-control" asp-items="@ViewBag.Types"></select>
+                    @Html.ValidationMessageFor(x => x.BustypeId)
                 </div>
             </div>
             <br />

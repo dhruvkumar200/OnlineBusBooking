@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OBB.Data;
 using OBB.Data.Entities;
 using OBB.Models;
@@ -20,7 +21,7 @@ namespace OBB.Repository
             user.Email=addUser.Email;
             user.Password=addUser.Password;
             user.PhoneNo=addUser.Phone;
-            user.RoleId= (int?)Common.RoleType.User;
+            user.RoleId=2;
             _context.Add(user);
             _context.SaveChanges();
             return true;
@@ -34,6 +35,14 @@ namespace OBB.Repository
         {
             return _context.UserTables.Any(x => x.Email == email);
         }
+
+         public List<RolesTable> GetRoles()
+        {
+            
+           return _context.RolesTables.ToList();
+            
+        }
+        
         
       
         

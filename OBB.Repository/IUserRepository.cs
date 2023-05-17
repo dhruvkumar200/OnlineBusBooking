@@ -8,5 +8,6 @@ namespace OBB.Repository
         public bool AddUser(AddUserModel addUser);
         public UserTable GetUserDetailbyEmail(string email);
         public bool VerifyEmail(string email);
+        public List<RolesTable> GetRoles();
     }
 }

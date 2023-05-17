@@ -9,69 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OBB.Web
 build_property.RootNamespace = OBB.Web
-build_property.ProjectDir = d:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Web\
+build_property.ProjectDir = D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Web\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Web
+build_property.MSBuildProjectDirectory = D:\STUDY MATERIAL\.NET Development\OnlineBusBooking\OBB.Web
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Booking/BookBus.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Booking/BookBus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29rQnVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Bus/AddBusForm.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Bus/AddBusForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXEFkZEJ1c0Zvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Bus/BusDetails.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Bus/BusDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXEJ1c0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Bus/EditBus.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Bus/EditBus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXEVkaXRCdXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Home/Index.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Home/Privacy.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/Error.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_Layout1.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_Layout1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_LayoutUser.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_LayoutUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/User/AddUserForm.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/User/AddUserForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBZGRVc2VyRm9ybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/User/LoginForm.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/User/LoginForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbkZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/_ViewImports.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/_ViewStart.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_Layout.cshtml]
+[D:/STUDY MATERIAL/.NET Development/OnlineBusBooking/OBB.Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3qpdrym7fe

@@ -35,6 +35,10 @@ namespace OBB.Business
         {
             return _iBusRepository.EditBusDetail(editbus);
         }
+        public List<BusTypeTable> GetBusType()
+        {
+            return _iBusRepository.GetBusType();
+        }
 
     }
 }
