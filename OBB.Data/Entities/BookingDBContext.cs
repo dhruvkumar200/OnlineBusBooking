@@ -36,11 +36,23 @@ namespace OBB.Data.Entities
         {
             modelBuilder.Entity<Booking>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("Booking");
 
                 entity.Property(e => e.CreatedDate).HasColumnType("date");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(10)
+                    .IsFixedLength();
+
+                entity.HasOne(d => d.BookedByNavigation)
+                    .WithMany(p => p.Bookings)
+                    .HasForeignKey(d => d.BookedBy)
+                    .HasConstraintName("FK_Booking_UserTable");
+
+                entity.HasOne(d => d.Bus)
+                    .WithMany(p => p.Bookings)
+                    .HasForeignKey(d => d.BusId)
+                    .HasConstraintName("FK_Booking_BusTable");
             });
 
             modelBuilder.Entity<BusTable>(entity =>

@@ -1,6 +1,7 @@
 @model IEnumerable<OBB.Data.Entities.BusTable>
 @{
      Layout="_Layout1";
+     ViewBag.Title="Msg";
 }
 <style>
     table {
@@ -34,13 +35,6 @@
 <div>
     <h2>Bus Details</h2>
 </div>
-<div>
-      @if(Model.FirstOrDefault().CreatedByNavigation.RoleId==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
-                {
-                     <label>@Html.ActionLink("Add","AddBusForm","Bus",new{@class="btn btn-primary"})
-                </label>
-                }
-</div>
 
 <table>
     <thead>
@@ -54,8 +48,7 @@
             <th>Date</th>
             <th>Seats</th>
             <th>Action</th>
-            <th>Action</th>
-            <th>Action</th>
+          
             
             
 
@@ -107,8 +100,9 @@
                 else
                 {
                      <td>
-                     <label>@Html.ActionLink("Book","BookBus","Bus",new{prod.Id},new{@class="btn btn-primary"})
+                     <label>@Html.ActionLink("BookNow","BookBusForm","Booking",new{prod.Id},new{@class="btn btn-primary"})
                 </label>
+                <a onclick="showInPopup('@Url.Action("AddOrEdit","Booking",new {id=prod.Id},Context.Request.Scheme)','Update Transaction')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
 
                 </td>
                 }

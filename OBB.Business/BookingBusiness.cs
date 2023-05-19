@@ -1,4 +1,5 @@
 using OBB.Data.Entities;
+using OBB.Models;
 using OBB.Repository;
 
 namespace OBB.Business
@@ -10,12 +11,10 @@ namespace OBB.Business
         {
             _iBookingRepository = iBookingRepository;
         }
-       
 
-
-
-
-
-
+        public bool BookBus(BookBusModel bookBusModel)
+        {
+            return _iBookingRepository.BookBus(bookBusModel);
+        }
     }
 }

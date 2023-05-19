@@ -5,6 +5,11 @@ namespace OBB.Data.Entities
 {
     public partial class BusTable
     {
+        public BusTable()
+        {
+            Bookings = new HashSet<Booking>();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string? RouteFrom { get; set; }
@@ -18,5 +23,6 @@ namespace OBB.Data.Entities
 
         public virtual BusTypeTable? BusTypeNavigation { get; set; }
         public virtual UserTable? CreatedByNavigation { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

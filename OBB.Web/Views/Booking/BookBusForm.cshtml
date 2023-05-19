@@ -1,0 +1,86 @@
+
+@model OBB.Models.BookBusModel
+@{
+     @TempData["Alert"];
+}
+<style>
+    .heading {
+        color: #4CAF50;
+    }
+
+    label {
+        font-weight: 600;
+        color: #666;
+    }
+
+    body {
+        background: #f1f1f1;
+    }
+
+    .box8 {
+        box-shadow: 0px 0px 5px 1px #999;
+        margin-top: 20px;
+    }
+
+    .mx-t3 {
+        margin-top: 2rem;
+        font-size: 25px;
+    }
+
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .btn:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<div class="container mt-5 ">
+
+    @using (Html.BeginForm("BookBus", "Booking", FormMethod.Post, new
+    {
+        id = "formRegistration",
+        enctype =
+    "multipart/form-data"
+    }))
+    {
+        <div class="row jumbotron box8">
+            <div class="col-sm-12 mx-t3 mb-5">
+                <h1 class="text-center heading">BookBus</h1>
+            </div>
+            <br>
+            <br/>
+            <br />
+            @Html.HiddenFor(x=>x.BusId);
+              <div class="col-sm-6 form-group mb-3">
+                <label for="Name" class="col-md-3 control-label">Name</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(x =>x.Name, "", new { @class = "form-control", placeholder = "Name" })
+                    @Html.ValidationMessageFor(x => x.Name,"",new{@class="text-danger"})
+                </div>
+            </div>
+            <div class="col-sm-6 form-group mb-3">
+                <label for="Seats" class="col-md-3 control-label"> Select Seats</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(x =>x.Seats, "", new { @class = "form-control", placeholder = "No of Seats" })
+                    @Html.ValidationMessageFor(x => x.Seats,"",new{@class="text-danger"})
+                </div>
+            </div>
+            <br /> 
+            <br />
+            <div class="col-md-offset-3 col-md-9">
+                <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Submit</button>
+                <span style="margin-left:8px;"></span>
+            </div>
+        </div>
+        
+    
+        
+
+
+    }
+
+

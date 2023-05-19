@@ -17,7 +17,7 @@ namespace OBB.Models
         public List<SelectListItem> BusTypeList{get;set;} 
         public int SelectedItem{get; set;}
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public int CreatedBy{get;set;}
     }
    

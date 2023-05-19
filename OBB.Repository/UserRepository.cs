@@ -21,7 +21,7 @@ namespace OBB.Repository
             user.Email=addUser.Email;
             user.Password=addUser.Password;
             user.PhoneNo=addUser.Phone;
-            user.RoleId=2; 
+            // user.RoleId=(int)Common.Roles.User; 
             _context.Add(user);
             _context.SaveChanges();
             return true;
@@ -37,10 +37,8 @@ namespace OBB.Repository
         }
 
          public List<RolesTable> GetRoles()
-        {
-            
+        {            
            return _context.RolesTables.ToList();
-            
         }
         
         

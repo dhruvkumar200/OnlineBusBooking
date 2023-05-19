@@ -5,6 +5,6 @@ namespace OBB.Repository
 {
     public interface IBookingRepository
     {
-    
+    public bool BookBus(BookBusModel bookBusModel);
     }
 }

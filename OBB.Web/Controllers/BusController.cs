@@ -102,6 +102,9 @@ namespace OBB.Web.Controllers
         }
         public IActionResult EditBusDetail(AddBusModel editbus)
         {
+            var claims = User.Identities.First().Claims.ToList();
+            int Id = Convert.ToInt32(claims.FirstOrDefault(x => x.Type.Contains("UserData", StringComparison.OrdinalIgnoreCase))?.Value);
+            editbus.CreatedBy=Id;
             var editedbusdetail = _iBusBusiness.EditBusDetail(editbus);
             return RedirectToAction("BusDetails", "Bus");
 

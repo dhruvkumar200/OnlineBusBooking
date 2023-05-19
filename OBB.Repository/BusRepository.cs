@@ -26,7 +26,7 @@ namespace OBB.Repository
             bus.Seats=addBus.Seats;
             bus.BusType=addBus.BustypeId;
             bus.CreatedBy=addBus.CreatedBy;
-            bus.Date=addBus.Date.ToString("MM/dd/yyyy");
+            bus.Date=addBus.Date;
             _context.Add(bus);
             return _context.SaveChanges() > 0;
         }
@@ -61,6 +61,7 @@ namespace OBB.Repository
             editbus.RouteTo=busdetailbyId.RouteTo;
             editbus.Time= (TimeSpan)busdetailbyId.Time;
             editbus.Seats=busdetailbyId.Seats;
+            editbus.Date=(busdetailbyId.Date);
             editbus.BusNo=busdetailbyId.BusNo;
             editbus.BustypeId=busdetailbyId.BusType;
             editbus.CreatedBy=Convert.ToInt32(busdetailbyId.CreatedBy);
@@ -77,7 +78,8 @@ namespace OBB.Repository
             bus.BusType=editbus.BustypeId;
             bus.BusNo=editbus.BusNo;
             bus.Seats=editbus.Seats;
-            bus.CreatedBy=2;
+            bus.Date=editbus.Date;
+            bus.CreatedBy=editbus.CreatedBy;
             _context.BusTables.Update(bus);
             return _context.SaveChanges()>0;
 

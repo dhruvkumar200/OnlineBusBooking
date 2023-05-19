@@ -42,23 +42,6 @@ namespace OBB.Web.Controllers
 
         public IActionResult AddUserForm()
         { 
-            var roles=_iUserBusiness.GetRoles();
-            if(roles!=null&&roles.Any())
-            {
-            List<SelectListItem> lstRoles = new List<SelectListItem>();
-                foreach (var role in roles)
-                {
-                 lstRoles.Add(new SelectListItem{
-                    Value=Convert.ToString(role.Id),
-                    Text=role.Name
-                 });
-                }
-            ViewBag.Roles=lstRoles;
-            }
-            else
-            {
-                ViewBag.Roles=new List<SelectListItem>();
-            }
             return View();    
         }
         
