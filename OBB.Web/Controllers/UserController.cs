@@ -87,7 +87,7 @@ namespace OBB.Web.Controllers
     public IActionResult Logout()
     {
         HttpContext.SignOutAsync();
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("BusDetails", "Bus");
     }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

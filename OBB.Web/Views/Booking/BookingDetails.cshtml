@@ -1,0 +1,75 @@
+@model IEnumerable<OBB.Data.Entities.Booking>
+@{
+     Layout="_Layout1";
+     ViewBag.Title="Msg";
+     
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #F2F2F2;
+    }
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #4CAF50;
+        text-decoration: underline;
+    }
+</style>
+@using (Html.BeginForm())
+{
+   
+}
+<div>
+    <h2>Booking Details</h2>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Passanger Name</th>
+            <th>PhoneNo</th>
+            <th>Seat Booked</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if(Model==null)
+        {
+            <p>You have some null value</p>
+        }
+        else
+        {
+            @foreach (var prod in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @prod.Name
+                    </td>
+                    <td>
+                        @prod.PhoneNo
+                    </td>
+                    <td>
+                        @prod.Quantity
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

@@ -15,13 +15,14 @@ namespace OBB.Repository
         public bool AddUser(AddUserModel addUser)
         {
             UserTable user = new UserTable();
+            var rolesTables=_context.RolesTables.FirstOrDefault();
             user.FirstName=addUser.FirstName;
             user.LastName=addUser.LastName;
             user.Address=addUser.Address;
             user.Email=addUser.Email;
             user.Password=addUser.Password;
             user.PhoneNo=addUser.Phone;
-            // user.RoleId=(int)Common.Roles.User; 
+            user.RoleId=rolesTables.Id;
             _context.Add(user);
             _context.SaveChanges();
             return true;

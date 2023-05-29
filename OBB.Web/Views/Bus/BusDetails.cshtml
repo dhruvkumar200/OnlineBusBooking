@@ -1,6 +1,14 @@
-@model IEnumerable<OBB.Data.Entities.BusTable>
+@model IEnumerable<OBB.Models.GetBusModel>;
 @{
-     Layout="_Layout1";
+    var controller=Model.FirstOrDefault().ClaimId;
+    if(controller!=0)
+    {
+        Layout="_Layout1";
+    }
+    else{
+     Layout="_Layout";
+
+    }
      ViewBag.Title="Msg";
 }
 <style>
@@ -46,71 +54,93 @@
             <th>RouteTo</th>
             <th>Time</th>
             <th>Date</th>
-            <th>Seats</th>
+            <th>Total seat</th>
+            <th>Available seat</th>
+            <th>Booked Seat</th>
             <th>Action</th>
-          
-            
-            
-
         </tr>
     </thead>
     <tbody>
-        @foreach (var prod in Model)
+
+        @if(Model!=null && Model.Count()==0)
         {
-               
-            <tr>
-                <td>
-                    @prod.BusNo
-                </td>
-                <td>
-                    @prod.Name
-                </td>
-                <td>
-                    @prod.BusTypeNavigation.Types
-                </td>
-                <td>
-                    @prod.RouteFrom
-                </td>
-                <td>
-                    @prod.RouteTo
-                </td>
-                <td>
-                    @prod.Time
-                </td>
-                <td>
-                    @prod.Date
-                </td>
-                <td>
-                    @prod.Seats
-                </td>
-                @if(prod.CreatedByNavigation.RoleId==Convert.ToInt32(User.Claims.FirstOrDefault(x=>x.Type.Contains("Role", StringComparison.OrdinalIgnoreCase))?.Value))
-                {
-                      
-                  <td>
-                     <label>@Html.ActionLink("Edit","EditBus","Bus",new{prod.Id},new{@class="btn btn-primary"})
-                </label>
+            <p>You have some null value</p>
+        }
+        else
+        {
+            @foreach (var prod in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @prod.BusNo
+                    </td>
+                    <td>
+                        @prod.Name
+                    </td>
+                    <td>
+                        @prod.Bustype
+                    </td>
+                    <td>
+                        @prod.RouteFrom
+                    </td>
+                    <td>
+                        @prod.RouteTo
+                    </td>
+                    <td>
+                        @prod.Time
+                    </td>
+                    <td>
+                        @prod.Date
+                    </td>
+                    <td>
+                        @prod.Totalseat
+                    </td>
+                    <td>
+                        @prod.AvlbSeat
+                    </td>
+                    <td>
+                        @prod.BookedSeat
+                    </td>
+                  
+                    @if(prod.ClaimId==prod.Role&&prod.ClaimId!=0)
+                    {  
+                        <td>
+                        <label>@Html.ActionLink("Edit","EditBus","Bus",new{@id=prod.BusId},new{@class="btn btn-primary"})
+                    </label>
+                    </td>
+                    <td>
+                        <label>@Html.ActionLink("BookingDetails","GetBookingDetails","Booking",new{@id=prod.BusId},new{@class="btn btn-primary"})
+                    </label>
+                    </td>
+                    }
+                    else
+                    {
+                         <td>
+                        <label>@Html.ActionLink("BookNow","BookBusForm","Booking",new{@id=prod.BusId,@seat=prod.AvlbSeat},new{@class="btn btn-primary"}) 
+                    </label>
+                    </td>
+                         
+                    }
+                       
+                    <td>
+                        <td>
+   
+</td>
 
-                </td>
-                <td>
-                     <label>@Html.ActionLink("Delete","DeleteBus","Bus",new{prod.Id},new{@class="btn btn-primary",onclick="return confirm('Do you really want to delete this record')"})
-                </label>
+                    </td>
+                
+                
 
-                </td>
-                }
-                else
-                {
-                     <td>
-                     <label>@Html.ActionLink("BookNow","BookBusForm","Booking",new{prod.Id},new{@class="btn btn-primary"})
-                </label>
-                <a onclick="showInPopup('@Url.Action("AddOrEdit","Booking",new {id=prod.Id},Context.Request.Scheme)','Update Transaction')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
-
-                </td>
-                }
-               
-             
-
-            </tr>
+                </tr>
+            }
         }
     </tbody>
 </table>
 
+
+
+
+
+
+    

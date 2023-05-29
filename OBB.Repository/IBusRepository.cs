@@ -10,7 +10,7 @@ namespace OBB.Repository
     public interface IBusRepository
     {
         bool AddBus(AddBusModel addBus);
-        List<BusTable> GetBusList();
+        public List<GetBusModel> GetBusList(int roleid);
         bool DeleteBusInfo(int id);
         AddBusModel GetBusDetailById(int id);
         public bool EditBusDetail(AddBusModel editbus);

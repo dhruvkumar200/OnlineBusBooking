@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using OBB.Data.Entities;
 using OBB.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Dynamic;
 
 namespace OBB.Repository
 {
@@ -15,7 +16,7 @@ namespace OBB.Repository
         {
             _context = context;
         }
-        public bool AddBus(AddBusModel addBus)
+        public  bool AddBus(AddBusModel addBus)
         {
             BusTable bus = new BusTable();
             bus.Name = addBus.Name;
@@ -28,13 +29,40 @@ namespace OBB.Repository
             bus.CreatedBy=addBus.CreatedBy;
             bus.Date=addBus.Date;
             _context.Add(bus);
-            return _context.SaveChanges() > 0;
+            return  _context.SaveChanges() > 0;
+             
         }
-        public List<BusTable> GetBusList()
+        public List<GetBusModel> GetBusList(int roleid)
         {
             
-            var BusInfo =_context.BusTables.Include(x=>x.BusTypeNavigation).Include(x=>x.CreatedByNavigation).ToList();
-            return BusInfo;
+            var busInfo =_context.BusTables.Include(x=>x.BusTypeNavigation).Include(x=>x.CreatedByNavigation).Include(x=>x.Bookings).ToList();
+            List <GetBusModel> busList=new List<GetBusModel>();
+            if(busInfo!=null)
+            {
+
+            foreach(var item in busInfo)
+            {
+
+            GetBusModel getBus=new GetBusModel();
+            getBus.Name=item.Name;
+            getBus.BusNo=item.BusNo;
+            getBus.Bustype=item.BusTypeNavigation.Types;
+            getBus.CreatedBy=item.CreatedBy;
+            getBus.Totalseat=item.Seats;
+            getBus.BookedSeat= item.Bookings!=null ? item.Bookings.Sum(x=>x.Quantity):0;
+            getBus.AvlbSeat= item.Seats-getBus.BookedSeat;
+            getBus.ClaimId=roleid;
+            getBus.Role=item.CreatedByNavigation.RoleId;
+            getBus.RouteFrom=item.RouteFrom;
+            getBus.RouteTo=item.RouteTo;
+            getBus.Time=(TimeSpan)item.Time;
+            getBus.Date=item.Date;
+            getBus.BusId=item.Id;
+            busList.Add(getBus);
+            }
+            }
+            return busList;
+            
         }
         public List<BusTypeTable> GetBusType()
         {

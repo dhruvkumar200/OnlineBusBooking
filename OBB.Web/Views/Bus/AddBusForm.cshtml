@@ -1,6 +1,6 @@
 @model OBB.Models.AddBusModel
 @{
-Layout="_Layout1";
+    Layout = "_Layout1";
 }
 <style>
     .heading {
@@ -36,8 +36,7 @@ Layout="_Layout1";
         color: white;
     }
 
-}
-
+    }
 </style>
 
 <div class="container mt-5 ">
@@ -74,15 +73,18 @@ Layout="_Layout1";
             <div class="col-sm-6 form-group mb-3">
                 <label for="BusType" class="col-md-3 control-label"> BusType</label>
                 <div class="col-md-9">
-                <select name="BustypeId" class="form-control" asp-items="@ViewBag.Types"></select>
+                    <select name="BustypeId" class="form-control" asp-items="@ViewBag.Types">
+                        <option value="" hidden>Select Type</option>
+                    </select>
+
                     @Html.ValidationMessageFor(x => x.BustypeId)
                 </div>
             </div>
             <br />
             <div class="col-sm-6 form-group mb-3">
-                <label for="NoofSeats" class="col-md-3 control-label"> No of Seats</label>
+                <label for="Seats" class="col-md-3 control-label">Select Seats</label>
                 <div class="col-md-9">
-                    @Html.TextBoxFor(x =>x.Seats, "", new { @class = "form-control", placeholder = "No of Seats" })
+                    @Html.DropDownListFor(m => m.Seats, Enumerable.Range(0, 100).Select(i => new SelectListItem { Text = i==0? "Select Seats" : i.ToString(), Value = i.ToString() }))
                     @Html.ValidationMessageFor(x => x.Seats,"",new{@class="text-danger"})
                 </div>
             </div>
@@ -111,7 +113,7 @@ Layout="_Layout1";
                     <div>
                         @Html.Label("Bus Time", null, new { @class = "control-label col-xs-3" })
                         <div class="col-xs-3">
-                           <input type="Time" asp-for="Time" placeholder="Time">
+                            <input type="Time" asp-for="Time" placeholder="Time">
                         </div>
                     </div>
                 </div>
@@ -125,9 +127,10 @@ Layout="_Layout1";
                 </div>
             </div>
 
-   <div class="col-md-offset-3 col-md-12 text-center mb-3">
-  <button id="btn-signup" type="submit" class="btn btn-info mx-auto"><i class="icon-hand-right"></i>Submit</button>
-</div>
+            <div class="col-md-offset-3 col-md-12 text-center mb-3">
+                <button id="btn-signup" type="submit" class="btn btn-info mx-auto"><i
+                        class="icon-hand-right"></i>Submit</button>
+            </div>
 
 
 

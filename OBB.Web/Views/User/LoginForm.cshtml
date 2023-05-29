@@ -1,90 +1,33 @@
-@model OBB.Models.LoginModel;
+   @model OBB.Models.LoginModel;
 @{
 
-}
+} 
 
-<style>
-    body {
-        background-color: #F2F2F2;
-        font-family: Arial, sans-serif;
-    }
-
-    h1 {
-        text-align: center;
-        margin-top: 50px;
-    }
-
-    form {
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        max-width: 500px;
-        margin: 50px auto;
-        padding: 30px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    label {
-        display: block;
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        font-size: 16px;
-        padding: 10px;
-        width: 100%;
-    }
-
-    button[type="submit"] {
-        background-color: #4CAF50;
-        border: none;
-        color: #fff;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 10px;
-        width: 100%;
-    }
-
-    button[type="submit"]:hover {
-        background-color: #3E8E41;
-    }
-</style>
-
-<h1>Login Page</h1>
-<div>
-    @using (Html.BeginForm("Login", "User", FormMethod.Post))
-    {
-        <div class="form-group">
-            <label for="UserName" class="col-md-3 control-label">Email</label>
-            <div class="col-md-9">
-                @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control", placeholder = "Enter your Email" })
-                @Html.ValidationMessageFor(x => x.Email,"",new{@class="text-danger"})
+    <div class="card" style="max-width: 600px;" >
+    <div class="card-header">
+        <h5 class="card-title">Login Form</h5>
+        </button>
+    </div>
+    <div class="card-body">
+        <form method="post" asp-action="Login" asp-controller="User">
+            <div class="form-group">
+                <label for="UserName" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-        </div>
-        <br />
-        <div class="form-group">
-            <label for="Password" class="col-md-3 control-label">Password</label>
-            <div class="col-md-9">
-                @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Enter your Password" })
-                @Html.ValidationMessageFor(x => x.Password,"",new{@class="text-danger"})
+            <br />
+            <div class="form-group">
+                <label for="Password" class="control-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-        </div>
-        <br />
-        <div>
-            <button type="submit">login</button>
-        </div>
-        <a asp-controller="User" asp-action="AddUserForm">
-            <h6 class="text-center pt-2">New User,SignUp here</h6>
-        </a>
-    }
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <p class="text-center">Don't have an account? <a asp-area="" asp-controller="User" asp-action="AddUserForm">Sign up now</a></p>
+
+        </form>
+    </div>
 </div>
+
 <span class="text-danger" style="align-items: center;">@ViewData["Errormsg"]</span>

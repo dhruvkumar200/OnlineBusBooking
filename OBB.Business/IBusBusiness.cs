@@ -9,7 +9,7 @@ namespace OBB.Business
 {
     public interface IBusBusiness
     {
-        List<BusTable> GetBusList();
+         public List<GetBusModel> GetBusList(int roleid);
         bool AddBus(AddBusModel addBusModel);
         bool DeleteBusInfo(int id);
         AddBusModel GetBusDetailById(int id);

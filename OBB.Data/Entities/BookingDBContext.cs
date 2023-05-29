@@ -40,18 +40,14 @@ namespace OBB.Data.Entities
 
                 entity.Property(e => e.CreatedDate).HasColumnType("date");
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                entity.Property(e => e.Name).HasMaxLength(50);
 
-                entity.HasOne(d => d.BookedByNavigation)
-                    .WithMany(p => p.Bookings)
-                    .HasForeignKey(d => d.BookedBy)
-                    .HasConstraintName("FK_Booking_UserTable");
+                entity.Property(e => e.PhoneNo).HasMaxLength(20);
 
                 entity.HasOne(d => d.Bus)
                     .WithMany(p => p.Bookings)
                     .HasForeignKey(d => d.BusId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Booking_BusTable");
             });
 
@@ -74,11 +70,13 @@ namespace OBB.Data.Entities
                 entity.HasOne(d => d.BusTypeNavigation)
                     .WithMany(p => p.BusTables)
                     .HasForeignKey(d => d.BusType)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_BusTable_BusType");
 
                 entity.HasOne(d => d.CreatedByNavigation)
                     .WithMany(p => p.BusTables)
                     .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_BusTable_UserTable");
             });
 

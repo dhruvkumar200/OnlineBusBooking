@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,6 +13,16 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @* <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script> *@
+
+
 
 </head>
 
@@ -20,15 +30,54 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <img class="navbar-brand"  src="data:image/png;base64,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" style="height: 50px; widht:50px" ><a asp-area="" asp-controller="Home" asp-action="Index" >BusBooking</a></img>
+
+                <style>
+                    .logo-link {
+                        text-decoration: none;
+                        font-weight: bold;
+                        font-family: 'Your Stylish Font', sans-serif;
+                        /* Replace with your desired font */
+                        font-size: 28px;
+                        /* Adjust font size as needed */
+                        color: #ffffff;
+                        /* Change to your desired color */
+                        display: flex;
+                        align-items: center;
+                         margin-top: 5px;
+                    }
+
+                    .logo-link:hover {
+                        text-decoration: none;
+                    }
+
+                    .logo-link img {
+                        height: 50px;
+                        width: 50px;
+                        vertical-align: middle;
+                         margin-right: 10px;
+
+                    }
+                </style>
+
+                <a href="@Url.Action("BusDetails", "Bus")" class="logo-link">
+                    <img src="data:image/png;base64,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"
+                        alt="Logo">
+                    OnlineBusBooking
+                </a>
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    
+                    <div class="justify-content-around">
+                        <ul class="navbar-nav flex-grow-1">
+                    </div>
+                    @Html.ActionLink("Login", "LoginForm", "User", null, new { @class = "btn btn-primary" })
                 </div>
             </div>
+            </ul>
         </nav>
     </header>
     <div class="container">
@@ -36,19 +85,6 @@
             @RenderBody()
         </main>
     </div>
-
-
-<div class="modal" tabindex="-1" role="dialog" id="form-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
 
     <footer class="border-top footer text-muted">
         <div class="container">

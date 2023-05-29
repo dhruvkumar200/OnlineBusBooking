@@ -16,5 +16,12 @@ namespace OBB.Business
         {
             return _iBookingRepository.BookBus(bookBusModel);
         }
+
+         public IEnumerable <Booking> GetBookingList(int id)
+        {
+            return _iBookingRepository.GetBookingList(id);
+        }
+
+     
     }
 }

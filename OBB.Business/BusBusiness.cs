@@ -15,9 +15,9 @@ namespace OBB.Business
         {
             _iBusRepository = iBusRepository;
         }
-        public List<BusTable> GetBusList()
+          public List<GetBusModel> GetBusList(int roleid)
         {
-            return _iBusRepository.GetBusList();
+            return _iBusRepository.GetBusList(roleid);
         }
         public bool AddBus(AddBusModel addBusModel)
         {
